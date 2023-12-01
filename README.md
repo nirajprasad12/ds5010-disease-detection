@@ -6,7 +6,7 @@
 - PIP 22 and above
   
 *Steps to Install:*
-Open Terminal and Run: ```pip install disease-detection ``` or to upgrade, run 
+Open Terminal and Run: ```pip install disease-detection``` or to upgrade, run 
 ```pip install --upgrade disease-detection```
 (this includes installation of all required packages like numpy, pandas, scikit-learn, etc. to run our main package)
 
