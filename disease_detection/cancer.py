@@ -25,9 +25,7 @@ import pkg_resources
 
 # Could be any dot-separated package/module name or a "Requirement"
 resource_package = __name__
-resource_path = '/'.join(('datasets', 'cancer.csv'))  # Do not use os.path.join()
-#template = pkg_resources.resource_string(resource_package, resource_path)
-# or for a file-like stream:
+resource_path = '/'.join(('datasets', 'cancer.csv'))  
 template = pkg_resources.resource_stream(resource_package, resource_path)
 
 
@@ -44,6 +42,21 @@ Y = labelencoder_Y.fit_transform(Y)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
 
+classifier_lr = LogisticRegression(random_state = 0)
+classifier_lr.fit(X_train, Y_train)
+
+classifier_knn = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
+classifier_knn.fit(X_train, Y_train)
+
+classifier_svc = SVC(kernel = 'linear', random_state = 0)
+classifier_svc.fit(X_train, Y_train)
+
+classifier_nb = GaussianNB()
+classifier_nb.fit(X_train, Y_train)
+
+classifier_rf = RandomForestClassifier(n_estimators = 10, criterion = 'entropy', random_state = 0)
+classifier_rf.fit(X_train, Y_train)
+
 class cancer:
     def __init__(self, X_inp):
         """Initialize the class"""
@@ -59,6 +72,7 @@ class cancer:
                     print("All elements in the input array must be numeric")
         else:
             self.flag = 1
+            print("Input cannot be None")
         
         if self.flag == 0:
             self.X_inp = X_inp
@@ -67,36 +81,27 @@ class cancer:
     def LogisticRegression(self):
         if self.flag != 0:
             return 'Initialization failed'
-        classifier_lr = LogisticRegression(random_state = 0)
-        classifier_lr.fit(X_train, Y_train)
         return list(classifier_lr.predict(self.X_inp))
     
     def KNearestNeighbours(self):
         if self.flag != 0:
             return 'Initialization failed'
-        classifier_knn = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
-        classifier_knn.fit(X_train, Y_train)
         return list(classifier_knn.predict(self.X_inp)) 
     
     def SupportVectorClassifier(self):
         if self.flag != 0:
             return 'Initialization failed'
-        classifier_svc = SVC(kernel = 'linear', random_state = 0)
-        classifier_svc.fit(X_train, Y_train)
         return list(classifier_svc.predict(self.X_inp)) 
     
     def GNB(self):
         if self.flag != 0:
             return 'Initialization failed'
-        classifier_nb = GaussianNB()
-        classifier_nb.fit(X_train, Y_train)
+        
         return list(classifier_nb.predict(self.X_inp)) 
     
     def RandomForest(self):
         if self.flag != 0:
             return 'Initialization failed'
-        classifier_rf = RandomForestClassifier(n_estimators = 10, criterion = 'entropy', random_state = 0)
-        classifier_rf.fit(X_train, Y_train)
         return list(classifier_rf.predict(self.X_inp))
 
     
