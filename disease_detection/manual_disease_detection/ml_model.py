@@ -19,7 +19,7 @@ def evaluate_model(clf, X_test, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
 
-    return accuracy, report
+    return y_pred, accuracy, report
 
 def plot_confusion_matrix(y_true, y_pred):
     # Plot confusion matrix
