@@ -29,3 +29,24 @@ print(g.RandomForest())
 ```
 
 Note that the length of the input array must be 30 for cancer, and all values should be numeric. Also, note that the input_array is a list of arrays - you can classify for any number of rows and our package should be able to handle this.
+
+### *For diabetes classification testing:*
+```ruby
+# import package/module on your Python env:
+from disease_detection import diabetes
+
+inp_arr = [[6, 148, 72, 35, 0, 33.6, 0.627, 50],
+[11, 138, 76, 0, 0, 33.2, 0.42,	35],
+[10, 139, 80, 0, 0,	27.1, 1.441, 57]]
+
+g = diabetes.diabetes(inp_arr)
+
+accuracy_knn = accuracy_score(Y_test, g1.KNearestNeighbours())
+accuracy_svc = accuracy_score(Y_test, g1.SupportVectorClassifier())
+accuracy_rf = accuracy_score(Y_test, g1.RandomForest())
+
+print(accuracy_knn, accuracy_svc, accuracy_rf)
+```
+
+Note that the length of the input array must be 8 for diabetes, and all values should be numeric.
+
