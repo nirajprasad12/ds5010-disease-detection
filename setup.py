@@ -2,15 +2,17 @@ from setuptools import setup, find_packages
 
 setup(
     name='disease_detection',
-    version='0.1.7',
+    version='0.1.8',
     packages=find_packages(),
-    package_data={'disease_detection': ['datasets/cancer.csv']},
+    package_data={'disease_detection': ['datasets/cancer.csv', 'datasets/diabetes.csv']},
     install_requires=[
         'numpy',
         'matplotlib',
         'pandas',
         'scikit-learn',
-        'seaborn'
+        'seaborn',
+        'pytest',
+        'pkg_resources'
     ],
     
     author='Niraj Prasad',
