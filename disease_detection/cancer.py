@@ -1,29 +1,3 @@
-# Library import
-import warnings
-warnings.filterwarnings("ignore")
-
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix
-
-# Library import
-import warnings
-import os
-import pandas as pd
-
-import pkg_resources
-
-# Could be any dot-separated package/module name or a "Requirement"
 resource_package = __name__
 resource_path = '/'.join(('datasets', 'cancer.csv'))  
 template = pkg_resources.resource_stream(resource_package, resource_path)
@@ -65,14 +39,14 @@ class cancer:
             for i in X_inp:
                 if len(i) != 30:
                     self.flag = 1
-                    print("Input array length must be 30 for all rows")
+                    raise ValueError("Input array length must be 30 for all rows")
         
                 if not all(isinstance(element, (int, float)) for element in i):
                     self.flag = 1
-                    print("All elements in the input array must be numeric")
+                    raise ValueError("All elements in the input array must be numeric")
         else:
             self.flag = 1
-            print("Input cannot be None")
+            raise ValueError("Input cannot be None")
         
         if self.flag == 0:
             self.X_inp = X_inp

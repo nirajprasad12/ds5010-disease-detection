@@ -1,42 +1,11 @@
-# Library import
-import warnings
-warnings.filterwarnings("ignore")
-
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-
-# Library import
-import warnings
-import os
-import pandas as pd
-
-import pkg_resources
-
-# Could be any dot-separated package/module name or a "Requirement"
 resource_package = __name__
 resource_path = '/'.join(('datasets', 'diabetes.csv'))  
 template = pkg_resources.resource_stream(resource_package, resource_path)
-
 
 dataset = pd.read_csv(template)
 
 X = dataset.drop(['Outcome'], axis=1)
 Y = dataset['Outcome']
-
-labelencoder_Y = LabelEncoder()
-Y = labelencoder_Y.fit_transform(Y)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
 
@@ -57,14 +26,14 @@ class diabetes:
             for i in X_inp:
                 if len(i) != 8:
                     self.flag = 1
-                    print("Input array length must be 8 for all rows")
+                    raise ValueError("Input array length must be 8 for all rows")
         
                 if not all(isinstance(element, (int, float)) for element in i):
                     self.flag = 1
-                    print("All elements in the input array must be numeric")
+                    raise ValueError("All elements in the input array must be numeric")
         else:
             self.flag = 1
-            print("Input cannot be None")
+            raise ValueError("Input cannot be None")
         
         if self.flag == 0:
             self.X_inp = X_inp
@@ -83,11 +52,6 @@ class diabetes:
         if self.flag != 0:
             return 'Initialization failed'
         return list(classifier_rf.predict(self.X_inp))
-
-
-# test = [[6, 148, 72, 35, 0, 33.6, 0.627, 50],
-# [11, 138, 76, 0, 0, 33.2, 0.42,	35],
-# [10, 139, 80, 0, 0,	27.1, 1.441, 57]]
 
 test = np.array(X_test)
 
