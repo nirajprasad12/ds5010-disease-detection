@@ -83,15 +83,82 @@ Note that the length of the input array must be 8 for diabetes, and all values s
 
 ### Example: Manual Disease Detection
 
+To import and prepare the dataset to pass to our package's manual detection module, do the following:
+```ruby
+# import sub-package modules
+from disease_detection.manual_disease_detection import preprocess
+from disease_detection.manual_disease_detection import extractfeatures
+from disease_detection.manual_disease_detection import ml_model
+
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+
+# split X and y in your datasets:
+dataset = pd.read_csv('cancer.csv')
+dataset = dataset.iloc[:, :-1]
+X = dataset.drop(['id', 'diagnosis'], axis=1)
+Y = dataset['diagnosis']
+labelencoder_Y = LabelEncoder()  # replace M and B with 0s and 1s
+Y = labelencoder_Y.fit_transform(Y)
+```
+
+The next step (optional) uses our package preprocess to impute nulls with mean values:
+```ruby
+X = preprocess.preprocess_data(X)
+```
+
+This step (optional) selects the k-best features from your dataset X. The value of k cannot go beyond the max number of features in your dataset. We have used Anova statistic to fetch the best features:
+```ruby
+X = pd.DataFrame(extractfeatures.select_best_features(X, Y, 'all'))  # for all features
+# X = pd.DataFrame(extractfeatures.select_best_features(X, Y, 5))  # for 5 best features
+```
+#### ML_Model.py
+
+This is the outline showcasing all functions in the ML_model.py file:
+
+<img width="324" alt="Screenshot 2023-12-11 at 5 11 56 PM" src="https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/0e741c23-1984-427e-badb-279128b1af4b">
+
+1. Now to train the required ML models, run the following:
+```ruby
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)  # optional step to split dataset and train
+
+model = ml_model.train_random_forest(X_train, Y_train)  # optional parameters: (n_estimators=100, max_depth=None)
+# model = ml_model.train_logistic_regression(X_train, Y_train)  # optional parameters: (random_state = 0)
+# model = ml_model.train_k_nearest_neighbours(X_train, y_train)  # optional parameters:  (n_neighbors = 5, metric = 'minkowski', p = 2)
+```
+2. Pass the model to predict values based on your data:
+```ruby
+y_pred = ml_model.predict_data(model, X_test)
+```
+3. You can use the evaluate_model function to evaluate the model's performance and find accuracy. The input parameters for this method are evaluate_model(clf, X_test, y_test, req_result = 0) where clf is the model instance fitted above, X_test and y_test are the evaluation input and expected output, and req_result is a flag.
+- if req_result = 0 or left empty, then return all three y_pred, accuracy, report
+- if req_result = 1, then return y_pred
+- if req_result = 2, then return accuracy
+- if req_result = 3, then return report
+```ruby
+y_pred, accuracy, report = ml_model.evaluate_model(model, X_test, Y_test)
+# y_pred = ml_model.evaluate_model(model, X_test, Y_test, 1)
+# accuracy = ml_model.evaluate_model(model, X_test, Y_test, 2)
+# report = ml_model.evaluate_model(model, X_test, Y_test, 3)
+```
+4. You can also output a seaborn plot of the confusion matrix by passing y_pred (predicted) and y_true (expected) to the plot_confusion_matrix function:
+```ruby
+ml_model.plot_confusion_matrix(Y_test, y_pred)
+```
+
 ### Example: Pytests
 We have set up a couple of simple unit tests using pytest to validate the input length, input data type and return data type of each classification model. 
+Currently, the package does not include tests to validate the correctness of the prediction itself.
+
 If you download and install the package manually, you can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following in CLI: 
 ```pytest -v disease_detection/tests```
+
+![Screenshot 2023-12-11 at 4 28 44 PM](https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/be078576-3d24-4169-9f40-dfdc385f04e2)
 
 If you install the package on PIP and want to access and run the unit tests on a platform (VS Code/Google Colab/Jupyter), follow the below steps:
 
 <img width="1252" alt="Screenshot 2023-12-10 at 8 37 39 PM" src="https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/73733623-9788-49c1-90b1-243f2bdf0249">
-
 
 
 
