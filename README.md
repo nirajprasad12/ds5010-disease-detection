@@ -5,6 +5,8 @@ At the core of our project is the development of an innovative Python package fo
 
 Users who do not possess train and test data for either disease may use the main package functionality (```cancer.py, diabetes.py```) under ```/disease_detection```. For users who wish to train models using their own disease data, we have built a sub-package ```/manual_disease_detection``` that offers a variety of different features such as feature selection, data preprocessing and an option to train a Random Forest model using their data.
 
+The entire package is published on PyPi and can be easily installed from here: https://pypi.org/project/disease-detection/
+
 ### Organization of Package Code:
 ```
 /ds5010-disease-detection
@@ -65,7 +67,7 @@ from disease_detection import diabetes
 # 3 input records of 8 features each
 inp_arr = [[6, 148, 72, 35, 0, 33.6, 0.627, 50],
 [11, 138, 76, 0, 0, 33.2, 0.42,	35],
-[10, 139, 80, 0, 0,	27.1, 1.441, 57]]
+[10, 139, 80, 0, 0, 27.1, 1.441, 57]]
 
 # Instantiating an object of the class
 g = diabetes.diabetes(inp_arr)
