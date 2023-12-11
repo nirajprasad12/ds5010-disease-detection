@@ -21,7 +21,7 @@ template = pkg_resources.resource_stream(resource_package, resource_path)
 dataset = pd.read_csv(template)
 dataset = dataset.iloc[:, :-1]
 
-X = dataset.drop(['id', 'diagnosis'], axis=1)
+X = pd.DataFrame(dataset.drop(['id', 'diagnosis'], axis=1).values)
 Y = dataset['diagnosis']
 
 # (M = malignant, B = benign) 

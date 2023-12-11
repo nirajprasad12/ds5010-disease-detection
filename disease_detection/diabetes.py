@@ -15,7 +15,7 @@ template = pkg_resources.resource_stream(resource_package, resource_path)
 
 dataset = pd.read_csv(template)
 
-X = dataset.drop(['Outcome'], axis=1)
+X = pd.DataFrame(dataset.drop(['Outcome'], axis=1).values)
 Y = dataset['Outcome']
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
