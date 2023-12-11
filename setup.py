@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='disease_detection',
-    version='0.1.8',
+    version='0.1.9',
     packages=find_packages(),
     package_data={'disease_detection': ['datasets/cancer.csv', 'datasets/diabetes.csv']},
     install_requires=[
