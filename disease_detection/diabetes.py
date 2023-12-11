@@ -1,24 +1,13 @@
 import warnings
 warnings.filterwarnings("ignore")
 
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import pkg_resources
 
-from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-
-from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-
-import os
-import pkg_resources
 
 resource_package = __name__
 resource_path = '/'.join(('datasets', 'diabetes.csv'))  
@@ -74,13 +63,3 @@ class diabetes:
         if self.flag != 0:
             return 'Initialization failed'
         return list(classifier_rf.predict(self.X_inp))
-
-test = np.array(X_test)
-
-g1 = diabetes(test)
-
-accuracy_knn = accuracy_score(Y_test, g1.KNearestNeighbours())
-accuracy_svc = accuracy_score(Y_test, g1.SupportVectorClassifier())
-accuracy_rf = accuracy_score(Y_test, g1.RandomForest())
-
-print(accuracy_knn, accuracy_svc, accuracy_rf)

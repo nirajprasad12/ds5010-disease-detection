@@ -1,9 +1,8 @@
 import warnings
 warnings.filterwarnings("ignore")
 
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import pkg_resources
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
@@ -13,12 +12,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-
-import os
-import pkg_resources
 
 resource_package = __name__
 resource_path = '/'.join(('datasets', 'cancer.csv'))  
@@ -99,26 +92,3 @@ class cancer:
         if self.flag != 0:
             return 'Initialization failed'
         return list(classifier_rf.predict(self.X_inp))
-
-    
-
-
-# print(g.LogisticRegression(X_test))
-# print(g.KNearestNeighbours(X_test))
-# print(g.SupportVectorClassifier(X_test))
-# print(g.GNB(X_test))
-# print(g.RandomForest(X_test))
-
-
-# something = [[13.54,	14.36,	87.46,	566.3,	0.09779,	0.08129,	0.06664,	0.04781,	0.1885,	0.05766,	0.2699,	0.7886,	2.058,	23.56,	0.008462,	0.0146,	0.02387,	0.01315,	0.0198,	0.0023,	15.11,	19.26,	99.7,	711.2,	0.144,	0.1773,	0.239,	0.1288,	0.2977,	0.07259	],
-# [19.81,	22.15,	130,	1260,	0.09831,	0.1027,	0.1479,	0.09498,	0.1582,	0.05395,	0.7582,	1.017,	5.865,	112.4,	0.006494,	0.01893,	0.03391,	0.01521,	0.01356,	0.001997,	27.32,	30.88,	186.8,	2398,	0.1512,	0.315,	0.5372,	0.2388,	0.2768,	0.07615	]]
-
-# g1 = cancer(something)
-
-
-# print(g1.LogisticRegression())
-# print(g1.KNearestNeighbours())
-# print(g1.SupportVectorClassifier())
-# print(g1.GNB())
-# print(g1.RandomForest())
-
