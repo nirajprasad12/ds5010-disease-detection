@@ -22,6 +22,9 @@ def train_k_nearest_neighbours(X_train, y_train, n_neighbors = 5, metric = 'mink
     classifier_knn.fit(X_train, y_train)
     return classifier_knn
 
+def predict_data(clf, X_test):
+    return clf.predict(X_test)
+
 def evaluate_model(clf, X_test, y_test, req_result = 0):
     # Make predictions
     y_pred = clf.predict(X_test)
