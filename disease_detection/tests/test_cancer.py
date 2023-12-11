@@ -38,7 +38,7 @@ def test_cancer_knn_prediction(sample_input):
     assert isinstance(result, list)
 
 @pytest.mark.filterwarnings("ignore::UserWarning")
-def test_cancer_knn_prediction(sample_input):
+def test_cancer_logistic_prediction(sample_input):
     g = cancer.cancer(sample_input)
     result = g.LogisticRegression()
     assert isinstance(result, list)
