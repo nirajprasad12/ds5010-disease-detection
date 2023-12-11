@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='disease_detection',
-    version='0.1.9',
+    version='0.2.1',
     packages=find_packages(),
     package_data={'disease_detection': ['datasets/cancer.csv', 'datasets/diabetes.csv']},
     install_requires=[
@@ -11,8 +11,7 @@ setup(
         'pandas',
         'scikit-learn',
         'seaborn',
-        'pytest',
-        'pkg_resources'
+        'pytest'
     ],
     
     author='Niraj Prasad',
