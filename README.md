@@ -3,7 +3,8 @@
 ### Purpose:
 At the core of our project is the development of an innovative Python package for disease detection. Drawing on advanced machine learning algorithms, we have built a comprehensive toolkit for the early identification of various illnesses, including cancer and diabetes. We have created a versatile and user-friendly solution that can be seamlessly integrated into existing systems and revolutionize healthcare in the process. Leveraging the power of Python libraries such as Pandas, NumPy, and Scikit-learn our package is an intuitive interface designed to facilitate efficient and accurate disease detection leading to improved patient outcomes.
 
-Users who do not possess train and test data for either disease may use the main package functionality (```cancer.py, diabetes.py```) under ```/disease_detection```. For users who wish to train models using their own disease data, we have built a sub-package ```/manual_disease_detection``` that offers a variety of different features such as feature selection, data preprocessing and an option to train a Random Forest model using their data.
+Users who do not possess train data for either disease, and simply wish to check if a particular record of data indicates the presence of the disease, may use the main package functionality (cancer.py, diabetes.py) under ```/disease_detection``` to classify their one or more records as “having the disease” or “not having the disease”. For users who wish to train models using their own disease data, we have built a sub-package ```/manual_disease_detection``` that offers a variety of different features such as feature selection, data preprocessing, an option to train and evaluate ML models using their train data and use the developed models to classify their own test data.
+
 
 The entire package is published on PyPi and can be easily installed from here: https://pypi.org/project/disease-detection/
 
@@ -84,10 +85,10 @@ Note that the length of the input array must be 8 for diabetes, and all values s
 
 ### Example: Pytests
 We have set up a couple of simple unit tests using pytest to validate the input length, input data type and return data type of each classification model. 
-If you download and install the package manually, you can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following: 
+If you download and install the package manually, you can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following in CLI: 
 ```pytest -v disease_detection/tests```
 
-If you install the package on PIP and want to access and run the unit tests, follow the below steps:
+If you install the package on PIP and want to access and run the unit tests on a platform (VS Code/Google Colab/Jupyter), follow the below steps:
 
 <img width="1252" alt="Screenshot 2023-12-10 at 8 37 39 PM" src="https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/73733623-9788-49c1-90b1-243f2bdf0249">
 
