@@ -36,6 +36,8 @@ def evaluate_model(clf, X_test, y_test, req_result = 0):
         return accuracy
     elif req_result == 3:
         return report
+    else:
+        print('Wrong input flag chosen - refer documentation')
 
 def plot_confusion_matrix(y_true, y_pred):
     # Plot confusion matrix
