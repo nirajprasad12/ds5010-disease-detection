@@ -83,6 +83,15 @@ Note that the length of the input array must be 8 for diabetes, and all values s
 ### Example: Manual Disease Detection
 
 ### Example: Pytests
-We have set up a couple of simple unit tests using pytest to validate the input length, input data type and return data type of each classification model. You can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following: 
+We have set up a couple of simple unit tests using pytest to validate the input length, input data type and return data type of each classification model. 
+If you download and install the package manually, you can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following: 
 ```pytest -v disease_detection/tests```
+
+If you install the package on PIP and want to access and run the unit tests, follow the below steps:
+
+<img width="1252" alt="Screenshot 2023-12-10 at 8 37 39 PM" src="https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/73733623-9788-49c1-90b1-243f2bdf0249">
+
+
+
+
 
