@@ -15,9 +15,11 @@ The entire package is published on PyPi and can be easily installed from here: h
       ├── __init__.py
       ├── cancer.py
       ├── diabetes.py
+      ├── heart.py
       ├── /datasets
           └── cancer.csv
           └── diabetes.csv
+          └── heart.csv
       ├── /manual_disease_detection
           ├── __init__.py
           ├── extractfeatures.py
@@ -27,6 +29,7 @@ The entire package is published on PyPi and can be easily installed from here: h
           ├── __init__.py
           ├── test_cancer.py
           ├── test_diabetes.py
+          ├── test_heart.py
   ├── README.md
   ├── setup.py
 ```
@@ -80,6 +83,27 @@ print(g.SupportVectorClassifier())
 print(g.RandomForest())
 ```
 Note that the length of the input array must be 8 for diabetes, and all values should be numeric.
+
+### Example: Heart Disease Detection
+```ruby
+# Import package/module on your Python env
+from disease_detection import heart
+
+# 3 input records of 13 features each
+inp_arr = [[63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1],
+    [67, 1, 4, 160, 286, 0, 2, 108, 1, 1.5, 1, 3, 2],
+    [62, 0, 4, 140, 268, 0, 2, 160, 0, 3.6, 3, 2, 3]]
+
+# Instantiating an object of the class
+g = heart.HeartDisease(inp_arr)
+
+# Fitting models and printing out the classification of each input
+# 0 indicates 'No Heart Disease' and 1 indicates 'Heart Disease'
+print(g.KNearestNeighbours())
+print(g.SupportVectorClassifier())
+print(g.RandomForest())
+```
+Note that the length of the input array must be 13 for heart disease, and all values should be numeric.
 
 ### Example: Manual Disease Detection
 
