@@ -41,6 +41,14 @@ The entire package is published on PyPi and can be easily installed from here: h
 - Open terminal and run ```pip install disease-detection```
 - To upgrade, run ```pip install --upgrade disease-detection```
 
+(Optional)
+If you want to download the package and run it directly from your desktop, you either need to add the folder to the PATH variable, or you can run the below before importing. Note that you may be prompted to install scikit-learn and other packages - you can do that by running pip install scikit-learn.
+```ruby
+import sys
+sys.path.insert(0, '*PATH_TO_MAIN_DIRECTORY*/ds5010-disease-detection')
+from disease_detection import cancer
+```
+
 ### Example: Cancer Detection
 ```ruby
 # Import package/module on your Python env
