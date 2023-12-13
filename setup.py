@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name='disease_detection',
-    version='0.2.2',
+    version='0.2.3',
     packages=find_packages(),
-    package_data={'disease_detection': ['datasets/cancer.csv', 'datasets/diabetes.csv']},
+    package_data={'disease_detection': ['datasets/cancer.csv', 'datasets/diabetes.csv', 'datasets/heart.csv']},
     install_requires=[
         'numpy',
         'matplotlib',
