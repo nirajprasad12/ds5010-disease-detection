@@ -178,7 +178,7 @@ Currently, the package does not include tests to validate the correctness of the
 If you download and install the package manually, you can run this in command line by simply navigating to the root of the repository ```ds5010-disease-detection/``` and running the following in CLI: 
 ```pytest -v disease_detection/tests```
 
-![Screenshot 2023-12-11 at 4 28 44 PM](https://github.com/nirajprasad12/ds5010-disease-detection/assets/26063090/be078576-3d24-4169-9f40-dfdc385f04e2)
+![Screenshot 2023-12-12 at 10 16 20 PM](https://github.com/nirajprasad12/ds5010-disease-detection/assets/99097664/a6de9f5b-6c33-4ff7-9605-e1a883d89819)
 
 If you install the package on PIP and want to access and run the unit tests on a platform (VS Code/Google Colab/Jupyter), follow the below steps:
 
